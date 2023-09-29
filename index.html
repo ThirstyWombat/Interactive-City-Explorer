@@ -6,8 +6,7 @@
     <title>Interactive City Explorer</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>  
   </head>
   <body>
     <section
@@ -32,5 +31,33 @@
       </div>
       <input class="button is-success" type="submit" value="Submit" />
     </div>
+   
   </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * { margin: 0; padding: 0; }
+    #map { height: 500px; width: 100%; }
+</style>
+<body>
+<div id="map"></div>
+
+<script>
+function initMap() {
+    var location = { lat: 38.89820627889498, lng: -77.03706641788843 };
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: location
+    });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2kXO7RltDxO9zF3NwY3qHVKMAl7qTMi8&callback=initMap"></script>
+</body>
 </html>
