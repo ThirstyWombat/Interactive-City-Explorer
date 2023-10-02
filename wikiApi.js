@@ -19,11 +19,22 @@ var lis
     .then(function(response){return response.json();} )
     .then(function(response) {
         console.log(response);
+        var links = document.createElement("div");
+        links.id = "links";
+        document.querySelector('#wikiInfo').appendChild(links);
+
         for(i=0; i<response[1].length;i++){
-            console.log("here:: " + response[1][i]) ;
             var li = document.createElement("li");
-            li.innerHTML = response[1][i];
-            document.querySelector('#search-results').appendChild(li);
+            document.querySelector('#links').appendChild(li);
+            li.id = "link"+(i+1);
+            //create list of elements to store links
+
+            var link = document.createElement("a");
+            link.setAttribute("href", response[3][i]);
+            //get link from api
+            link.innerHTML = response[1][i];
+            //get title from api
+            document.querySelector('#link'+(i+1)).appendChild(link);
         }
         //get title of first 5 search results
 
