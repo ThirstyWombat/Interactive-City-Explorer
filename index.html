@@ -35,27 +35,51 @@
     <div class="control m-2">
       <label class="label">Pick a city</label>
       <div class="select">
-        <select>
-          <option>City 1</option>
-          <option>City 2</option>
-          <option>City 3</option>
-          <option>City 4</option>
-          <option>City 5</option>
+        <select id="citySelect">
+          <option value="home">Home</option>
+          <option value="paris">Paris</option>
+          <option value="newyork">New York</option>
+          <option value="london">London</option>
+          <!-- Add more cities here -->
         </select>
       </div>
-      <input class="button is-success" type="submit" value="Submit" />
+      <input class="button is-success" id="button" type="submit" value="Submit" />
     </div>
     <div id="map"></div>
 
     <script>
       function initMap() {
-        var location = { lat: 38.89820627889498, lng: -77.03706641788843 };
-        var map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: location,
+        //Declaring variables to get the map div and also the city select
+        var mapDiv = document.getElementById("map");
+        var citySelect = document.getElementById("citySelect");
+    
+        // List of cities and their lat and lng
+        //We can add more cities if needed
+        var cities = {
+          home: { lat: 38.8997, lng: -77.0486 },
+          paris: { lat: 48.8566, lng: 2.3522 },
+          newyork: { lat: 40.7128, lng: -74.0060 },
+          london: { lat: 51.5074, lng: -0.1278 },
+        
+        };
+        //Defining the city that was selected and the location by pulling it out of the array
+        var selectedCity = citySelect.value;
+        var cityLocation = cities[selectedCity];
+        
+        //updating the location of the map by calling the mapDiv and centering 
+        //the location at city Location
+        var map = new google.maps.Map(mapDiv, {
+          zoom: 12, 
+          center: cityLocation,
         });
       }
+        //Adding an event listener to the button ID which will call the function 
+        //initMap when clicking the submit button
+      document.getElementById("button").addEventListener("click", function () {
+        initMap();
+      });
     </script>
+    
     <script
       async
       defer
