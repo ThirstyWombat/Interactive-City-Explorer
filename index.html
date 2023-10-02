@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
- 
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Interactive City Explorer</title>
@@ -11,14 +8,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <style>
       * {
         margin: 0;
         padding: 0;
-      }
-      #map {
-        height: 500px;
-        width: 100%;
       }
     </style>
   </head>
@@ -32,6 +26,7 @@
         Welcome to city explorer!
       </h1>
     </section>
+
     <div class="control m-2">
       <label class="label">Pick a city</label>
       <div class="select">
@@ -85,7 +80,6 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2kXO7RltDxO9zF3NwY3qHVKMAl7qTMi8&callback=initMap"
     ></script>
-    <script sr ="wikiApi.js"></script>
+    <script src="wikiApi.js"></script>
   </body>
 </html>
-
