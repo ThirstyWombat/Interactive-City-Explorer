@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
- 
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Interactive City Explorer</title>
@@ -46,7 +43,7 @@
       <input class="button is-success" type="submit" value="Submit" />
     </div>
     <div id="map"></div>
-
+    <div id="wikiInfo" class="box"></div>
     <script>
       function initMap() {
         var location = { lat: 38.89820627889498, lng: -77.03706641788843 };
@@ -61,7 +58,6 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2kXO7RltDxO9zF3NwY3qHVKMAl7qTMi8&callback=initMap"
     ></script>
-    <script sr ="wikiApi.js"></script>
+    <script src="wikiApi.js"></script>
   </body>
 </html>
-
