@@ -40,6 +40,57 @@
       </div>
       <input class="button is-success" id="button" type="submit" value="Submit" />
     </div>
+  </section>
+  <script src ="wikiApi.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+  
+ 
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive City Explorer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 500px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <section
+      class="section navbar is-success is-flex is-justify-content-center"
+    >
+      <h1
+        class="title is-2 has-text-white has-text-centered has-text-weight-bold"
+      >
+        Welcome to city explorer!
+      </h1>
+    </section>
+    <div class="control m-2">
+      <label class="label">Pick a city</label>
+      <div class="select">
+        <select>
+          <option>City 1</option>
+          <option>City 2</option>
+          <option>City 3</option>
+          <option>City 4</option>
+          <option>City 5</option>
+        </select>
+      </div>
+      <input class="button is-success" type="submit" value="Submit" />
+    </div>
     <div id="map"></div>
 
     <script>
