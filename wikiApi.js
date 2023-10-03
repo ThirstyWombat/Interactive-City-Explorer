@@ -3,14 +3,19 @@ var url = "https://en.wikipedia.org/w/api.php";
 
 
 //add search location variable to main JS file 
-var params = {
-    action: "opensearch",
-    search: "seattle",
-    limit: "5",
-    namespace: "0",
-    format: "json"
-};
 
+var userSearch = "seattle";//load last search here
+var limit = 5;
+
+function search(userSearch){ 
+    var params = {
+        action: "opensearch",
+        search: userSearch,
+        limit: limit,
+        namespace: "0",
+        format: "json"
+    };
+    
 url = url + "?origin=*";
 Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
 
@@ -37,9 +42,22 @@ var lis
             document.querySelector('#link'+(i+1)).appendChild(link);
         }
         //get title of first 5 search results
-
-       
-
-        
 })
     .catch(function(error){console.log(error);})
+
+}
+document.getElementById("button").addEventListener("click", updateSearch);
+
+function updateSearch(){
+      var parent = document.getElementById("links");
+      while(parent.firstChild){
+        parent.removeChild(parent.firstChild)
+    }
+    //remove all child elements and add new ones with updated search results and links
+    
+    var searchResults = document.getElementById("citySelect").value;
+    search(searchResults);
+    //updates search results based on selection
+}
+
+search(userSearch);
