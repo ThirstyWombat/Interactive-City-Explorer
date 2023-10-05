@@ -4,13 +4,13 @@ var url = "https://en.wikipedia.org/w/api.php";
 
 //add search location variable to main JS file 
 
-var userSearch = "seattle";//load last search here
+var cityName = loadLocal();//load last search here
 var limit = 5;
 
-function search(userSearch){ 
+function search(cityName){ 
     var params = {
         action: "opensearch",
-        search: userSearch,
+        search: cityName,
         limit: limit,
         namespace: "0",
         format: "json"
@@ -55,9 +55,19 @@ function updateSearch(){
     }
     //remove all child elements and add new ones with updated search results and links
     
-    var searchResults = document.getElementById("citySelect").value;
-    search(searchResults);
+    var searchName = document.getElementById("citySelect").value;
+    saveLocal(searchName);
+    search(searchName);
     //updates search results based on selection
 }
+function loadLocal(lastSearch){
+   var search =  localStorage.getItem("lastSearch");
+   return search;
+}//load most recent search result from local storage
 
-search(userSearch);
+function saveLocal(lastSearch){
+    localStorage.setItem("lastSearch", lastSearch);
+}//save most recent search result to local storage
+
+
+search(cityName);
