@@ -7,7 +7,7 @@ function initMap() {
   //We can add more cities if needed
   var cities = {
    
-      dc: {lat: 38.8997, lng: -77.0486 },
+      washingtondc: {lat: 38.8997, lng: -77.0486 },
       amsterdam: {lat:52.3676, lng:4.9041 },
       barcelona: {lat:41.3874, lng:2.1686},
       boston: {lat:42.3601, lng:-71.0589},
@@ -39,4 +39,5 @@ function initMap() {
 //initMap when clicking the submit button
 document.getElementById("button").addEventListener("click", function () {
   initMap();
+  
 });
