@@ -9,12 +9,6 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
   </head>
   <body>
     <section
@@ -26,47 +20,49 @@
         Welcome to city explorer!
       </h1>
     </section>
-
-    <div class="control m-2">
-      <label class="label">Pick a city</label>
-      <div class="select">
-        <select id="citySelect">
-          <option value="dc">Washington DC</option>
-          <option value="amsterdam">Amsterdam</option>
-          <option value="barcelona">Barcelona</option>
-          <option value="boston">Boston</option>
-          <option value="chicago">Chicago</option>
-          <option value="losangeles">Los Angeles</option>
-          <option value="london">London</option>
-          <option value="newyork">New York</option>
-          <option value="paris">Paris</option>
-          <option value="sanfran">San Francisco</option>
-          <option value="seattle">Seattle</option>
-          <option value="seoul">Seoul</option>
-          <option value="Madrid">Madrid</option>
-          <option value="rome">Rome</option>
-          <option value="tokyo">Tokyo</option>
-          <!-- Add more cities here -->
-        </select>
-      </div>
-      <input class="button is-success" id="button" type="submit" value="Submit" />
+    <div id="allContent" class="is-flex">
+      <aside>
+        <div class="control m-2">
+          <label class="label">Pick a city</label>
+          <div class="select">
+            <select id="citySelect">
+              <option value="dc">Washington DC</option>
+              <option value="amsterdam">Amsterdam</option>
+              <option value="barcelona">Barcelona</option>
+              <option value="boston">Boston</option>
+              <option value="chicago">Chicago</option>
+              <option value="losangeles">Los Angeles</option>
+              <option value="london">London</option>
+              <option value="newyork">New York</option>
+              <option value="paris">Paris</option>
+              <option value="sanfran">San Francisco</option>
+              <option value="seattle">Seattle</option>
+              <option value="seoul">Seoul</option>
+              <option value="Madrid">Madrid</option>
+              <option value="rome">Rome</option>
+              <option value="tokyo">Tokyo</option>
+              <!-- Add more cities here -->
+            </select>
+          </div>
+          <input
+            class="button is-success mt-2"
+            id="button"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </aside>
+      <main class="mt-3">
+        <div id="map" class="ml-6"></div>
+        <div id="wikiInfo" class="ml-6"></div>
+      </main>
     </div>
-  </section>
-  
-
-
-
-    <div id="map"></div>
-    <div id="wikiInfo"></div>
-    
-   
-    
     <script
       async
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2kXO7RltDxO9zF3NwY3qHVKMAl7qTMi8&callback=initMap"
     ></script>
-    <script src="wikiApi.js"></script>
+    <script src="./assets/javascript/wikiApi.js"></script>
     <script src="./assets/javascript/maps.js"></script>
   </body>
 </html>

@@ -1,4 +1,16 @@
+/* * {
+  border: red 1px solid;
+} */
 #map {
   height: 500px;
-  width: 50%;
+  width: 80%;
+}
+
+main {
+  width: 100%;
+}
+
+#allContent {
+  max-width: 1200px;
+  margin: auto;
 }
