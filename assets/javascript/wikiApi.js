@@ -7,7 +7,10 @@ var url = "https://en.wikipedia.org/w/api.php";
 var cityName = loadLocal();//load last search here
 var limit = 5;
 
+var citySelection = document.getElementById("citySelect"); 
+
 function search(cityName){ 
+    
     var params = {
         action: "opensearch",
         search: cityName,
@@ -23,10 +26,12 @@ var lis
  fetch(url)
     .then(function(response){return response.json();} )
     .then(function(response) {
-        console.log(response);
+        //console.log(response);
         var links = document.createElement("div");
         links.id = "links";
         document.querySelector('#wikiInfo').appendChild(links);
+
+
 
         for(i=0; i<response[1].length;i++){
             var li = document.createElement("li");
@@ -55,13 +60,20 @@ function updateSearch(){
     }
     //remove all child elements and add new ones with updated search results and links
     
-    var searchName = document.getElementById("citySelect").value;
+    var searchName = citySelection.options[citySelection.selectedIndex].text;
+    console.log("searching: "+searchName);
     saveLocal(searchName);
+    //saves last search to local storage
     search(searchName);
     //updates search results based on selection
 }
 function loadLocal(lastSearch){
    var search =  localStorage.getItem("lastSearch");
+    if(search == null){
+        search = citySelection.options[citySelection.selectedIndex].text;
+    }
+    //loads first option on dropdown list if nothing to load from local storage
+
    return search;
 }//load most recent search result from local storage
 
@@ -69,5 +81,13 @@ function saveLocal(lastSearch){
     localStorage.setItem("lastSearch", lastSearch);
 }//save most recent search result to local storage
 
+function loadSearchHeader(){
+    console.log("here: "+citySelection.options[citySelection.selectedIndex].text);
+    var searchHeader = document.createElement("h1");
+    searchHeader.innerHTML = "Search Results:";
+    searchHeader.id = "search-header";
+    document.querySelector('#wikiInfo').appendChild(searchHeader);
+}
 
+loadSearchHeader();
 search(cityName);
