@@ -68,7 +68,7 @@ function loadLocal(lastSearch) {
         search = citySelection.options[citySelection.selectedIndex].text;
     }
     //loads first option on dropdown list if nothing to load from local storage
-
+ //testing
     return search;
 }//load most recent search result from local storage
 
