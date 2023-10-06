@@ -80,4 +80,5 @@ function loadSearchHeader() {
     document.querySelector('#wikiInfo').appendChild(searchHeader);
 }
 
+loadSearchHeader();
 search(userSearch);
