@@ -59,5 +59,25 @@ function updateSearch(){
     search(searchResults);
     //updates search results based on selection
 }
+function loadLocal(lastSearch) {
+    var search = localStorage.getItem("lastSearch");
+    if (search == null) {
+        search = citySelection.options[citySelection.selectedIndex].text;
+    }
+    //loads first option on dropdown list if nothing to load from local storage
+ //testing
+    return search;
+}//load most recent search result from local storage
+
+function saveLocal(lastSearch) {
+    localStorage.setItem("lastSearch", lastSearch);
+}//save most recent search result to local storage
+
+function loadSearchHeader() {
+    var searchHeader = document.createElement("h1");
+    searchHeader.innerHTML = "Search Results:";
+    searchHeader.id = "search-header";
+    document.querySelector('#wikiInfo').appendChild(searchHeader);
+}
 
 search(userSearch);
