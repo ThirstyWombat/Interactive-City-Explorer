@@ -1,0 +1,15 @@
+//on submit click if local storage variable previousCity is !null, do init map with citySelect.value = previousCity
+// if (localstorageVar !== null) {citylocation = cities[localstorageVAr] }
+//else { city location = cities[selectedCity]}
+// localStorage.setItem("previousHistory", previousHistory);
+// previousHistory = JSON.parse(localStorage.getItem("previousHistory"));
+// whatevr = ci
+// startupfucntion { if !== null var map = new google.maps.Map(mapDiv, {    zoom: 12,    center: localstorage value,}
+
+//on click it saves the text content of the drop down option and the value as an object and pushes it into an array (previousCities), then sets it to local storage
+//on page start up, it parses the previousCities. if previousCities is empty, previousCities = [], else, run the button making function
+//the button making function is a for loop, (let i =0; i < previousCities; i++) each loop it makes button with the option value as a value
+// and option text content as the text content. then appends that button to a search history div
+// when the button is clicked the value is used in a function similar to initmap but this button's value is used to center instead of citySelect.value
+// as well as a function similar to update search but again with this button's value used instead of citySelect.
+let previousCities = JSON.parse(localStorage.getItem("previousCities"));
