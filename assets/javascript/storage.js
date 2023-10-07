@@ -12,4 +12,22 @@
 // and option text content as the text content. then appends that button to a search history div
 // when the button is clicked the value is used in a function similar to initmap but this button's value is used to center instead of citySelect.value
 // as well as a function similar to update search but again with this button's value used instead of citySelect.
-let previousCities = JSON.parse(localStorage.getItem("previousCities"));
+let searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
+if (!searchHistory) {
+  searchHistory = [];
+} else {
+  initsearchHistory();
+  console.log(searchHistory);
+}
+
+function initsearchHistory() {
+  let searchHistorydiv = document.getElementById("searchHistory");
+  searchHistorydiv.classList.remove("is-hidden");
+  for (let i = 0; i < searchHistory.length; i++) {
+    let buttonText = searchHistory[i].Text;
+    console.log(buttonText);
+    let buttonValue = searchHistory[i].Value;
+    console.log(buttonValue);
+  }
+}

@@ -22,6 +22,7 @@ function initMap() {
     rome: { lat: 41.9028, lng: 12.4964 },
     tokyo: { lat: 35.6762, lng: 139.6503 },
   };
+
   //Defining the city that was selected and the location by pulling it out of the array
   var selectedCity = citySelect.value;
 
@@ -36,6 +37,18 @@ function initMap() {
 }
 //Adding an event listener to the button ID which will call the function
 //initMap when clicking the submit button
+// citySelect.addEventListener("change", function (){
+
+// })
 document.getElementById("button").addEventListener("click", function () {
   initMap();
+  let choice = citySelect.selectedIndex;
+  let choiceText = citySelect[choice].text;
+  let choiceValue = citySelect[choice].value;
+  console.log(choiceText);
+  console.log(choiceValue);
+  let savedInfo = { Text: choiceText, Value: choiceValue };
+  console.log(savedInfo);
+  searchHistory.push(savedInfo);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 });
