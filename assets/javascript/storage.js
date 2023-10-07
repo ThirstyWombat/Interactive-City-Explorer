@@ -23,11 +23,32 @@ if (!searchHistory) {
 
 function initsearchHistory() {
   let searchHistorydiv = document.getElementById("searchHistory");
+
+  searchHistorydiv.innerHTML = "";
+
+  let historydivLabel = document.createElement("label");
+
+  historydivLabel.classList.add("label");
+
+  historydivLabel.textContent = "Previous Searches:";
+
+  searchHistorydiv.appendChild(historydivLabel);
+
   searchHistorydiv.classList.remove("is-hidden");
+
   for (let i = 0; i < searchHistory.length; i++) {
     let buttonText = searchHistory[i].Text;
-    console.log(buttonText);
+    // console.log(buttonText);
     let buttonValue = searchHistory[i].Value;
-    console.log(buttonValue);
+    // console.log(buttonValue);
+    let historyBtn = document.createElement("button");
+
+    historyBtn.textContent = buttonText;
+
+    historyBtn.setAttribute("value", buttonValue);
+
+    historyBtn.classList.add("button", "m-1");
+
+    searchHistorydiv.appendChild(historyBtn);
   }
 }
