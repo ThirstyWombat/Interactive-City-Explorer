@@ -12,6 +12,10 @@
 // and option text content as the text content. then appends that button to a search history div
 // when the button is clicked the value is used in a function similar to initmap but this button's value is used to center instead of citySelect.value
 // as well as a function similar to update search but again with this button's value used instead of citySelect.
+
+//on click of a search history button, clear the inner html of wikiinfoDiv, use the event.target.value to pass to the search function, apend the wanted info as
+// list of links in wikiinfodiv
+
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
 if (!searchHistory) {
@@ -20,6 +24,7 @@ if (!searchHistory) {
   initsearchHistory();
   console.log(searchHistory);
 }
+
 function mapfromHistorybtn() {
   let cities = {
     washingtondc: { lat: 38.8997, lng: -77.0486 },
@@ -45,6 +50,65 @@ function mapfromHistorybtn() {
     zoom: 12,
     center: cityMap,
   });
+}
+
+function wikifromHistorybtn() {
+  let url = "https://en.wikipedia.org/w/api.php";
+
+  let limit = 5;
+
+  let userSearch = event.target.textContent;
+
+  let wikiinfoDiv = document.getElementById("wikiInfo");
+
+  wikiinfoDiv.innerHTML = "";
+
+  let wikiHeader = document.createElement("h1");
+
+  wikiHeader.textContent = "Search Results:";
+
+  wikiinfoDiv.appendChild(wikiHeader);
+
+  function search(userSearch) {
+    var params = {
+      action: "opensearch",
+      search: userSearch,
+      limit: limit,
+      namespace: "0",
+      format: "json",
+    };
+
+    url = url + "?origin=*";
+    Object.keys(params).forEach(function (key) {
+      url += "&" + key + "=" + params[key];
+    });
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+
+      .then(function (response) {
+        let links = document.createElement("div");
+
+        links.id = "links";
+
+        document.querySelector("#wikiInfo").appendChild(links);
+        for (i = 0; i < response[1].length; i++) {
+          let li = document.createElement("li");
+          document.querySelector("#links").appendChild(li);
+          li.id = "link" + (i + 1);
+          //create list of elements to store links
+
+          var link = document.createElement("a");
+          link.setAttribute("href", response[3][i]);
+          //get link from api
+          link.innerHTML = response[1][i];
+          //get title from api
+          document.querySelector("#link" + (i + 1)).appendChild(link);
+        }
+      });
+  }
+  search(userSearch);
 }
 
 function initsearchHistory() {
@@ -82,6 +146,7 @@ function initsearchHistory() {
       console.log("clicked");
       console.log(event.target.value);
       mapfromHistorybtn();
+      wikifromHistorybtn();
     }
   });
 }
