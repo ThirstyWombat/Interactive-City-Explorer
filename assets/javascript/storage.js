@@ -70,7 +70,7 @@ function wikifromHistorybtn() {
   wikiinfoDiv.appendChild(wikiHeader);
 
   function search(userSearch) {
-    var params = {
+    let params = {
       action: "opensearch",
       search: userSearch,
       limit: limit,
