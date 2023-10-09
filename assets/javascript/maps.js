@@ -30,7 +30,7 @@ function initMap() {
 
   //updating the location of the map by calling the mapDiv and centering
   //the location at city Location
-  var map = new google.maps.Map(mapDiv, {
+   new google.maps.Map(mapDiv, {
     zoom: 12,
     center: cityLocation,
   });
@@ -41,3 +41,5 @@ document.getElementById("button").addEventListener("click", function () {
   initMap();
   
 });
+
+initMap()
