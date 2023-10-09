@@ -49,6 +49,10 @@ document.getElementById("button").addEventListener("click", function () {
   console.log(choiceValue);
   let savedInfo = { Text: choiceText, Value: choiceValue };
   console.log(savedInfo);
-  searchHistory.push(savedInfo);
-  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  let filteredHistory = searchHistory.filter(function (entry) {
+    return entry.Value !== choiceValue;
+  });
+  console.log(filteredHistory);
+  filteredHistory.push(savedInfo);
+  localStorage.setItem("searchHistory", JSON.stringify(filteredHistory));
 });
