@@ -4,7 +4,7 @@ var url = "https://en.wikipedia.org/w/api.php";
 
 //add search location variable to main JS file 
 
-var cityName = loadLocal();//load last search here
+var cityName = "Washington DC"//load last search here
 var limit = 5;
 var citySelection = document.getElementById("citySelect");
 
@@ -61,15 +61,6 @@ function updateSearch() {
     search(searchName);
     //updates search results based on selection
 }
-function loadLocal(lastSearch) {
-    var search = localStorage.getItem("lastSearch");
-    if (search == null) {
-        search = citySelection.options[citySelection.selectedIndex].text;
-    }
-    //loads first option on dropdown list if nothing to load from local storage
- //testing
-    return search;
-}//load most recent search result from local storage
 
 function saveLocal(lastSearch) {
     localStorage.setItem("lastSearch", lastSearch);
