@@ -1,30 +1,11 @@
-//on submit click if local storage variable previousCity is !null, do init map with citySelect.value = previousCity
-// if (localstorageVar !== null) {citylocation = cities[localstorageVAr] }
-//else { city location = cities[selectedCity]}
-// localStorage.setItem("previousHistory", previousHistory);
-// previousHistory = JSON.parse(localStorage.getItem("previousHistory"));
-// whatevr = ci
-// startupfucntion { if !== null var map = new google.maps.Map(mapDiv, {    zoom: 12,    center: localstorage value,}
-
-//on click it saves the text content of the drop down option and the value as an object and pushes it into an array (previousCities), then sets it to local storage
-//on page start up, it parses the previousCities. if previousCities is empty, previousCities = [], else, run the button making function
-//the button making function is a for loop, (let i =0; i < previousCities; i++) each loop it makes button with the option value as a value
-// and option text content as the text content. then appends that button to a search history div
-// when the button is clicked the value is used in a function similar to initmap but this button's value is used to center instead of citySelect.value
-// as well as a function similar to update search but again with this button's value used instead of citySelect.
-
-//on click of a search history button, clear the inner html of wikiinfoDiv, use the event.target.value to pass to the search function, apend the wanted info as
-// list of links in wikiinfodiv
-
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-
+//Pulls the search history from local storage
 if (!searchHistory) {
   searchHistory = [];
 } else {
   initsearchHistory();
-  console.log(searchHistory);
 }
-
+//Checks to see if the search history is empty. If so it sets the search history variable to an empty array. If not, it executes initsearchHistory.
 function mapfromHistorybtn() {
   let cities = {
     washingtondc: { lat: 38.8997, lng: -77.0486 },
@@ -50,6 +31,7 @@ function mapfromHistorybtn() {
     zoom: 12,
     center: cityMap,
   });
+  //Uses the value taken from the search history button clicked to center the map.
 }
 
 function wikifromHistorybtn() {
@@ -58,17 +40,17 @@ function wikifromHistorybtn() {
   let limit = 5;
 
   let userSearch = event.target.textContent;
-
+  //Sets the clicked button's text value as the search parameter.
   let wikiinfoDiv = document.getElementById("wikiInfo");
 
   wikiinfoDiv.innerHTML = "";
-
+  //Clears the inner html of the wiki info div so that the previously generated list of links is removed.
   let wikiHeader = document.createElement("h1");
 
   wikiHeader.textContent = "Search Results:";
 
   wikiinfoDiv.appendChild(wikiHeader);
-
+  //Recreatees the h1 element and it's text content and appends it to the wiki info div
   function search(userSearch) {
     let params = {
       action: "opensearch",
@@ -108,6 +90,7 @@ function wikifromHistorybtn() {
         }
       });
   }
+
   search(userSearch);
 }
 
@@ -125,12 +108,12 @@ function initsearchHistory() {
   searchHistorydiv.appendChild(historydivLabel);
 
   searchHistorydiv.classList.remove("is-hidden");
-
+  //Clears any previous html inside the search history div, appends a new label to it, and removes the hidden class from the div to make it visible.
   for (let i = 0; i < searchHistory.length; i++) {
     let buttonText = searchHistory[i].Text;
-    // console.log(buttonText);
+
     let buttonValue = searchHistory[i].Value;
-    // console.log(buttonValue);
+
     let historyBtn = document.createElement("button");
 
     historyBtn.textContent = buttonText;
@@ -140,13 +123,13 @@ function initsearchHistory() {
     historyBtn.classList.add("button", "m-1");
 
     searchHistorydiv.appendChild(historyBtn);
+    //A loop which iterates over the array taken from local storage, Uses the Text key of each object as the button's text contant and the Value key as it's value.
   }
   searchHistorydiv.addEventListener("click", function (event) {
     if (event.target.classList.contains("button")) {
-      console.log("clicked");
-      console.log(event.target.value);
       mapfromHistorybtn();
       wikifromHistorybtn();
     }
+    //a click event listener for the entire search history div which checks if the target was a button before executing the two functions.
   });
 }

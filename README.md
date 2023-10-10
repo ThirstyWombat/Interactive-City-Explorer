@@ -3,6 +3,7 @@
 ## Description
 
 <a href="https://thirstywombat.github.io/Interactive-City-Explorer/">Interactive City Explorer</a>
+
 A user-friendly website that allows you to select from a drop down list of cities and view it on an interactive map.
 
 ## Installation
