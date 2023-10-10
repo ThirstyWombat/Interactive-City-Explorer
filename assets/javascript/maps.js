@@ -30,7 +30,7 @@ function initMap() {
 
   //updating the location of the map by calling the mapDiv and centering
   //the location at city Location
-   new google.maps.Map(mapDiv, {
+  new google.maps.Map(mapDiv, {
     zoom: 12,
     center: cityLocation,
   });
@@ -45,16 +45,17 @@ document.getElementById("button").addEventListener("click", function () {
   let choice = citySelect.selectedIndex;
   let choiceText = citySelect[choice].text;
   let choiceValue = citySelect[choice].value;
-  console.log(choiceText);
-  console.log(choiceValue);
+
   let savedInfo = { Text: choiceText, Value: choiceValue };
-  console.log(savedInfo);
+
   let filteredHistory = searchHistory.filter(function (entry) {
     return entry.Value !== choiceValue;
   });
-  console.log(filteredHistory);
+
   filteredHistory.push(savedInfo);
   localStorage.setItem("searchHistory", JSON.stringify(filteredHistory));
+  //Saves the text content and value of the option picked as values in a object, filters the array for any repeated values, then pushes the object to the array
+  // and sets it to local storage,
 });
 
-initMap()
+initMap();
